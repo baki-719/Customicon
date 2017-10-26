@@ -38,7 +38,7 @@ import com.tzutalin.dlib.Constants;
 import com.tzutalin.dlib.FaceDet;
 import com.tzutalin.dlib.PedestrianDet;
 import com.tzutalin.dlib.VisionDetRet;
-import com.tzutalin.customicon.Utils.EyebrowShape;
+import com.tzutalin.customicon.Utils.Shape.EyebrowShape;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -365,7 +365,10 @@ public class MainActivity extends AppCompatActivity {
             EyebrowShape eyebrowShape = new EyebrowShape(landmarks.subList(17, 22));
             Log.d("EyebrowShape-distance", String.valueOf(eyebrowShape.getShape().get("distance")));
             Log.d("EyebrowShape-slope", String.valueOf(eyebrowShape.getShape().get("slope")));
+            for (int i = 0 ; i < landmarks.size() ; i++) Log.d("LandmarksCoordination :"+i, landmarks.get(i).toString());
 
+
+            // TODO: 2017-10-27 3. resizing images
 
 
             for (int i = 0; i < landmarks.size(); i++) {
