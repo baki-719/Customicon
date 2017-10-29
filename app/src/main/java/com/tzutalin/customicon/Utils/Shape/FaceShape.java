@@ -2,7 +2,7 @@ package com.tzutalin.customicon.Utils.Shape;
 
 import android.graphics.Point;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DEV on 2017-10-27.
@@ -13,10 +13,10 @@ public class FaceShape extends Shape {
     private Point right;
     private Point bottom;
     private double height;
-    private double weight;
+    private double width;
 
 
-    public FaceShape(ArrayList<Point> landmarks) {
+    public FaceShape(List<Point> landmarks) {
         this.left = landmarks.get(0);
         this.right = landmarks.get(16);
         this.bottom = landmarks.get(8);
@@ -28,12 +28,13 @@ public class FaceShape extends Shape {
     public void cal(){
         calMidPoint(left, right);
         height = calDistance(mid, bottom);
-        weight = calDistance(left, right);
+        width = calDistance(left, right);
     }
 
     public void setShape() {
         shape.put("height", height);
-        shape.put("weight", weight);
+        shape.put("width", width);
+        shape.put("ratio", height/width);
     }
 
 

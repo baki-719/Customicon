@@ -43,7 +43,7 @@ public class EyeShape extends Shape{
 
     public void setShape() {
         shape.put("height", calDistance(top, bottom));
-        shape.put("weight", calDistance(front, back));
+        shape.put("width", calDistance(front, back));
         shape.put("slope", calSlope(front, back));
     }
 

@@ -34,6 +34,9 @@ import android.widget.Toast;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.provider.BigImageCardProvider;
 import com.dexafree.materialList.view.MaterialListView;
+import com.tzutalin.customicon.Utils.Resize.Emoticons;
+import com.tzutalin.customicon.Utils.Resize.Resize;
+import com.tzutalin.customicon.Utils.Shape.FaceShape;
 import com.tzutalin.dlib.Constants;
 import com.tzutalin.dlib.FaceDet;
 import com.tzutalin.dlib.PedestrianDet;
@@ -354,6 +357,7 @@ public class MainActivity extends AppCompatActivity {
             // Get landmark
             ArrayList<Point> landmarks = ret.getFaceLandmarks();
             //0~16 : face shape
+            List<Point> face = landmarks.subList(0, 17);
             //17~21 : left eyebrow
             List<Point> eyebrow = landmarks.subList(17, 22);
             //22~26 : right eyebrow
@@ -362,13 +366,19 @@ public class MainActivity extends AppCompatActivity {
             //42~47 : right eye (42 : left, 45 : right)
             //48~67 : lip
             Point point = null;
+            FaceShape faceShape = new FaceShape(face);
+            Emoticons emo = new Emoticons();
+            Resize resize = new Resize((double) (bm.getHeight()/bm.getWidth()), (Double) faceShape.getShape().get("ratio"), emo.getEmoticonImageRatio(), emo.getEmoticonFaceRatio());
+
+
             EyebrowShape eyebrowShape = new EyebrowShape(landmarks.subList(17, 22));
             Log.d("EyebrowShape-distance", String.valueOf(eyebrowShape.getShape().get("distance")));
             Log.d("EyebrowShape-slope", String.valueOf(eyebrowShape.getShape().get("slope")));
             for (int i = 0 ; i < landmarks.size() ; i++) Log.d("LandmarksCoordination :"+i, landmarks.get(i).toString());
 
-
-            // TODO: 2017-10-27 3. resizing images
+            // TODO: 2017-10-29 0. getting emoticons shape data (using canvas object)
+            // TODO: 2017-10-29 2. setting resizing standard (now use test data)
+            // TODO: 2017-10-27 3. resizing shape data
 
 
             for (int i = 0; i < landmarks.size(); i++) {
