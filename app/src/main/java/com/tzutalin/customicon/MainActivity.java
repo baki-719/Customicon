@@ -29,6 +29,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.dexafree.materialList.card.Card;
@@ -89,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mListView = (MaterialListView) findViewById(R.id.material_listview);
+        mListView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EmoticonActivity.class);
+                startActivity(intent);
+            }
+        });
         setSupportActionBar(mToolbar);
         // Just use hugo to print log
         isExternalStorageWritable();
@@ -216,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "You haven't picked Image", Toast.LENGTH_LONG).show();
             }
+            
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
@@ -293,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
 
     @UiThread
     protected void addCardListView(List<Card> cardrets) {
+        mListView.clearAll();
         for (Card each : cardrets) {
             mListView.add(each);
         }
