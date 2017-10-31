@@ -27,6 +27,8 @@ public class DecoActivity extends AppCompatActivity{
         Intent intent = getIntent();
         shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
 
+        // TODO: 2017-10-31 sort face component to shapeData
+
         findViewById(R.id.confirm).setOnClickListener(mClickListner);
         findViewById(R.id.eyebrow1).setOnClickListener(mClickListner);
         findViewById(R.id.eyebrow2).setOnClickListener(mClickListner);

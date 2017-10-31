@@ -28,6 +28,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.dexafree.materialList.card.Card;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private ShapeData shapeData;
+    private boolean isDeveloping = false;
 
     // Storage Permissions
     private static String[] PERMISSIONS_REQ = {
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     @ViewById(R.id.fab)
     protected FloatingActionButton mFabActionBt;
     @ViewById(R.id.fab_next)
-    protected FloatingActionButton mFabNectBt;
+    protected FloatingActionButton mFabNextBt;
     @ViewById(R.id.fab_cam)
     protected FloatingActionButton mFabCamActionBt;
     @ViewById(R.id.toolbar)
@@ -124,7 +126,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Click({R.id.fab_cam})
     protected void launchCameraPreview() {
-        startActivity(new Intent(this, CameraActivity.class));
+        if(isDeveloping) {
+            Intent intent = new Intent(MainActivity.this, EmoticonActivity.class);
+            intent.putExtra("isDeveloping", isDeveloping);
+        } else {
+            startActivity(new Intent(this, CameraActivity.class));
+        }
     }
 
     @Click({R.id.fab_next})
@@ -272,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
             Card card = new Card.Builder(MainActivity.this)
                     .withProvider(BigImageCardProvider.class)
                     .setDrawable(drawRect(imgPath, faceList, Color.GREEN))
-                    .setTitle("Face det")
+                    .setTitle("")//Face det
                     .endConfig()
                     .build();
             cardrets.add(card);
@@ -304,7 +311,6 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         addCardListView(cardrets);
-        
         dismissDialog();
     }
 
@@ -359,6 +365,9 @@ public class MainActivity extends AppCompatActivity {
             Timber.tag(TAG).d("resizeRatio " + resizeRatio);
         }
 
+        // TODO: 2017-10-31 get rectangle size
+        // TODO: 2017-10-31 cal face ratio
+
         // Create canvas to draw
         Canvas canvas = new Canvas(bm);
         Paint paint = new Paint();
@@ -372,6 +381,14 @@ public class MainActivity extends AppCompatActivity {
             bounds.top = (int) (ret.getTop() * resizeRatio);
             bounds.right = (int) (ret.getRight() * resizeRatio);
             bounds.bottom = (int) (ret.getBottom() * resizeRatio);
+
+            double rectHeight = bounds.right - bounds.left;
+            double rectWidth = bounds.top - bounds.bottom;
+
+            Log.d("rect","Rect : "+ bounds.toString());
+            Log.d("rectSize", "Height : " + rectHeight);
+            Log.d("rectSize", "Width : "+ rectWidth);
+
             canvas.drawRect(bounds, paint);
             // Get landmark
             ArrayList<Point> landmarks = ret.getFaceLandmarks();
@@ -402,9 +419,6 @@ public class MainActivity extends AppCompatActivity {
                     , noseShape.getWidth()
                     , mouthShape.getHeight()
                     , mouthShape.getWidth());
-
-            // TODO: 2017-10-31 deliver object shape to EmoticonActivity using putExtra
-            // TODO: 2017-10-31 make object shape concretely
 
             Point point = null;
             for (int i = 0; i < landmarks.size(); i++) {

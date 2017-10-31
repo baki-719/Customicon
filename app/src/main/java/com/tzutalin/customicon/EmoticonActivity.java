@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
@@ -16,68 +17,115 @@ import org.aspectj.lang.reflect.InterTypeConstructorDeclaration;
  * Created by DEV on 2017-10-31.
  */
 
-public class EmoticonActivity extends AppCompatActivity{
+public class EmoticonActivity extends AppCompatActivity {
 
     private ShapeData shapeData;
+    private boolean isDeveloping;
+
+    private ImageView ryan;
+    private ImageView ggam;
+    private ImageView rabbit;
+    private ImageView jibang;
+
+    Intent nextIntent = new Intent(getApplicationContext(), DecoActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emoticon);
 
-        Intent intent = getIntent();
-        shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
+        init();
 
-        ImageView ryan = (ImageView) findViewById(R.id.user_image1);
+        Intent intent = getIntent();
+        isDeveloping = intent.getExtras().getBoolean("isDeveloping");
+
+        shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
+        nextIntent.putExtra("shapeData", shapeData);
+
+
+//        ryan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(nextIntent);
+//            }
+//        });
+//
+//        jibang.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(nextIntent);
+//            }
+//        });
+//
+//        rabbit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(nextIntent);
+//            }
+//        });
+//
+//        ggam.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(nextIntent);
+//            }
+//        });
+
+    }
+
+    private void init() {
+        ryan = (ImageView) findViewById(R.id.user_image1);
+        ryan.setOnClickListener(mClickListener);
         GlideDrawableImageViewTarget gifImage1 = new GlideDrawableImageViewTarget(ryan);
         Glide.with(this).load(R.drawable.ryan).into(gifImage1);
 
-        ImageView ggam = (ImageView) findViewById(R.id.user_image2);
+        ggam = (ImageView) findViewById(R.id.user_image2);
+        ggam.setOnClickListener(mClickListener);
         GlideDrawableImageViewTarget gifImage2 = new GlideDrawableImageViewTarget(ggam);
         Glide.with(this).load(R.drawable.ggam).into(gifImage2);
 
-        ImageView rabbit = (ImageView) findViewById(R.id.user_image3);
+        rabbit = (ImageView) findViewById(R.id.user_image3);
+        rabbit.setOnClickListener(mClickListener);
         GlideDrawableImageViewTarget gifImage3 = new GlideDrawableImageViewTarget(rabbit);
         Glide.with(this).load(R.drawable.rabbit).into(gifImage3);
 
-        ImageView jibang = (ImageView) findViewById(R.id.user_image4);
+        jibang = (ImageView) findViewById(R.id.user_image4);
+        jibang.setOnClickListener(mClickListener);
         GlideDrawableImageViewTarget gifImage4 = new GlideDrawableImageViewTarget(jibang);
         Glide.with(this).load(R.drawable.jibang).into(gifImage4);
 
-        ryan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DecoActivity.class);
-                intent.putExtra("shapeData",shapeData);
-                startActivity(intent);
-            }
-        });
-
-        jibang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DecoActivity.class);
-                intent.putExtra("shapeData",shapeData);
-                startActivity(intent);
-            }
-        });
-
-        rabbit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DecoActivity.class);
-                intent.putExtra("shapeData",shapeData);
-                startActivity(intent);
-            }
-        });
-
-        ggam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DecoActivity.class);
-                intent.putExtra("shapeData",shapeData);
-                startActivity(intent);
-            }
-        });
     }
+
+    View.OnClickListener mClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (isDeveloping) {
+                switch (v.getId()) {
+                    case R.id.user_image1:
+                        break;
+                    case R.id.user_image2:
+                        break;
+                    case R.id.user_image3:
+                        break;
+                    case R.id.user_image4:
+                        break;
+                }
+            } else {
+                switch (v.getId()) {
+                    case R.id.user_image1:
+                        startActivity(nextIntent);
+                        break;
+                    case R.id.user_image2:
+                        startActivity(nextIntent);
+                        break;
+                    case R.id.user_image3:
+                        startActivity(nextIntent);
+                        break;
+                    case R.id.user_image4:
+                        startActivity(nextIntent);
+                        break;
+                }
+            }
+        }
+    };
 }
