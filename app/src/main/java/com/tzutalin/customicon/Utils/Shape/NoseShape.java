@@ -19,10 +19,10 @@ public class NoseShape extends Shape {
 
     public NoseShape(List<Point> landmarks) {
         points = landmarks;
-        left = points.get(31);
-        right = points.get(35);
-        top = points.get(27);
-        bottom = points.get(33);
+        left = points.get(4);
+        right = points.get(8);
+        top = points.get(0);
+        bottom = points.get(6);
 
         setShape();
     }

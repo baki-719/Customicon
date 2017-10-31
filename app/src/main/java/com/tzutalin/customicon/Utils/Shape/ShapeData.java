@@ -29,6 +29,19 @@ public class ShapeData implements Serializable {
         this.mouthWidth = mouthWidth;
     }
 
+    @Override
+    public String toString(){
+        return "(eyebrowSlop : "+eyebrowSlope+
+                ", eyebrowLength : " +eyebrowLength+
+                ", eyeSlope : " +eyeSlope+
+                ", eyeHeight : " +eyeHeight+
+                ", eyeWidth : " +eyeWidth+
+                ", noseHeight : " +noseHeight+
+                ", noseWidth : " +noseWidth+
+                ", mouthHeight : " +mouthHeight+
+                ", mouthWidth : " +mouthWidth+")";
+    }
+
     public double getEyebrowSlope() {
         return eyebrowSlope;
     }

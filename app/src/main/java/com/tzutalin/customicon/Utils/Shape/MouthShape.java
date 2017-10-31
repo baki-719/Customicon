@@ -20,10 +20,10 @@ public class MouthShape extends Shape {
 
     public MouthShape(List<Point> landmarks) {
         points = landmarks;
-        left = points.get(46);
-        right = points.get(54);
-        top = calMidPoint(points.get(50), points.get(52));
-        bottom = points.get(57);
+        left = points.get(0);
+        right = points.get(6);
+        top = calMidPoint(points.get(2), points.get(4));
+        bottom = points.get(9);
 
         setShape();
     }

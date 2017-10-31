@@ -3,6 +3,7 @@ package com.tzutalin.customicon;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,8 +48,10 @@ public class DecoActivity extends AppCompatActivity{
         ImageView mouth3 = (ImageView) findViewById(R.id.mouth3);
         ImageView mouth4 = (ImageView) findViewById(R.id.mouth4);
 
-
+        Log.d("shapeData", shapeData.toString());
     }
+
+
 
     Button.OnClickListener mClickListner = new View.OnClickListener() {
 

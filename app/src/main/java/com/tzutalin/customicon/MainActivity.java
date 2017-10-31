@@ -383,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
             //27~35 : nose (27~30 vertical, 31~35 : horizon)
             List<Point> nose = landmarks.subList(27, 36);
             //36~41 : left eye (36 : left, 39 : right)
-            List<Point> eye = landmarks.subList(36, 40);
+            List<Point> eye = landmarks.subList(36, 42);
             //42~47 : right eye (42 : left, 45 : right)
             //48~67 : mouth
             List<Point> mouth = landmarks.subList(48,68);
