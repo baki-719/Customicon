@@ -28,18 +28,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.provider.BigImageCardProvider;
 import com.dexafree.materialList.view.MaterialListView;
-import com.tzutalin.customicon.Utils.Resize.Emoticons;
-import com.tzutalin.customicon.Utils.Resize.Resize;
-import com.tzutalin.customicon.Utils.Shape.FaceShape;
+import com.tzutalin.customicon.Utils.Shape.EyeShape;
+import com.tzutalin.customicon.Utils.Shape.MouthShape;
+import com.tzutalin.customicon.Utils.Shape.NoseShape;
+import com.tzutalin.customicon.Utils.Shape.ShapeData;
 import com.tzutalin.dlib.Constants;
 import com.tzutalin.dlib.FaceDet;
 import com.tzutalin.dlib.PedestrianDet;
@@ -66,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_PERMISSION = 2;
 
     private static final String TAG = "MainActivity";
+
+    private ShapeData shapeData;
 
     // Storage Permissions
     private static String[] PERMISSIONS_REQ = {
@@ -132,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     protected void nextActivity(){
         if(mListView.getAdapter().getItemCount() > 0) {
             Intent emoticonIntent = new Intent(MainActivity.this, EmoticonActivity.class);
-            emoticonIntent.putExtra("","");
+            emoticonIntent.putExtra("shapeData",shapeData);
             startActivity(emoticonIntent);
         } else {
             Toast.makeText(MainActivity.this, "Face recognition first plz", Toast.LENGTH_SHORT).show();
@@ -382,24 +381,32 @@ public class MainActivity extends AppCompatActivity {
             List<Point> eyebrow = landmarks.subList(17, 22);
             //22~26 : right eyebrow
             //27~35 : nose (27~30 vertical, 31~35 : horizon)
+            List<Point> nose = landmarks.subList(27, 36);
             //36~41 : left eye (36 : left, 39 : right)
+            List<Point> eye = landmarks.subList(36, 40);
             //42~47 : right eye (42 : left, 45 : right)
-            //48~67 : lip
-            Point point = null;
-            FaceShape faceShape = new FaceShape(face);
-            Emoticons emo = new Emoticons();
-            Resize resize = new Resize((double) (bm.getHeight()/bm.getWidth()), (Double) faceShape.getShape().get("ratio"), emo.getEmoticonImageRatio(), emo.getEmoticonFaceRatio());
+            //48~67 : mouth
+            List<Point> mouth = landmarks.subList(48,68);
 
+            EyebrowShape eyebrowShape = new EyebrowShape(eyebrow);
+            EyeShape eyeShape = new EyeShape(eye);
+            NoseShape noseShape = new NoseShape(nose);
+            MouthShape mouthShape = new MouthShape(mouth);
 
-            EyebrowShape eyebrowShape = new EyebrowShape(landmarks.subList(17, 22));
-            Log.d("EyebrowShape-distance", String.valueOf(eyebrowShape.getShape().get("distance")));
-            Log.d("EyebrowShape-slope", String.valueOf(eyebrowShape.getShape().get("slope")));
-            for (int i = 0 ; i < landmarks.size() ; i++) Log.d("LandmarksCoordination :"+i, landmarks.get(i).toString());
+            shapeData = new ShapeData(eyebrowShape.getSlope()
+                    , eyebrowShape.getLength()
+                    , eyeShape.getSlope()
+                    , eyeShape.getWidth()
+                    , eyeShape.getHeight()
+                    , noseShape.getHeight()
+                    , noseShape.getWidth()
+                    , mouthShape.getHeight()
+                    , mouthShape.getWidth());
 
             // TODO: 2017-10-31 deliver object shape to EmoticonActivity using putExtra
             // TODO: 2017-10-31 make object shape concretely
 
-
+            Point point = null;
             for (int i = 0; i < landmarks.size(); i++) {
                 point = landmarks.get(i);
                 String num = Integer.toString(i);

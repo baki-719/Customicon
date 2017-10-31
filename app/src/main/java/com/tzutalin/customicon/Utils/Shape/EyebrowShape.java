@@ -13,6 +13,8 @@ public class EyebrowShape extends Shape {
     private Point front;
     private Point back;
     private Point top;
+    private double slope;
+    private double length;
 
 
     public EyebrowShape(List<Point> landmarks) {
@@ -29,23 +31,17 @@ public class EyebrowShape extends Shape {
         setShape();
     }
 
-
-
-    public double calSlope(Point a, Point b) {
-        double deltaX = b.y - a.y;
-        double deltaY = b.x - a.x;
-
-        double slope =  deltaY / deltaX ;
-
+    public double getSlope() {
         return slope;
     }
 
-    public void setShape() {
-        double dis = calDistance(mid, top);
-        double slope = calSlope(front, back);
+    public double getLength() {
+        return length;
+    }
 
-        shape.put("distance", dis);
-        shape.put("slope", slope);
+    public void setShape() {
+        length = calDistance(mid, top);
+        slope = calSlope(front, back);
     }
 
 

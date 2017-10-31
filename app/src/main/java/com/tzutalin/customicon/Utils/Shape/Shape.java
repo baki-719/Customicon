@@ -12,16 +12,14 @@ import java.util.Map;
 
 public class Shape {
 
-    private List<Point> points;
     protected Point mid;
-    protected HashMap<String, Double> shape = new HashMap<>();
 
 
-
-    public void calMidPoint(Point front, Point back) {
+    public Point calMidPoint(Point front, Point back) {
         int midX = calMid(front.x, back.x);
         int midY = calMid(front.y, back.y);
         mid = new Point(midX, midY);
+        return mid;
     }
 
     public int calMid(int x, int y) {
@@ -39,14 +37,13 @@ public class Shape {
         return distance;
     }
 
+    public double calSlope(Point a, Point b) {
+        double deltaX = b.y - a.y;
+        double deltaY = b.x - a.x;
 
-    public List<Point> getPoints() {
-        return points;
+        double slope =  deltaY / deltaX ;
+
+        return slope;
     }
-
-    public Map getShape() {
-        return shape;
-    }
-
 
 }

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.tzutalin.customicon.Utils.Shape.ShapeData;
+
 /**
  * Created by pixeleye02 on 2017-10-31.
  */
@@ -14,11 +16,15 @@ import android.widget.ImageView;
 public class DecoActivity extends AppCompatActivity{
 
     private boolean[] bitList = new boolean[16];
+    private ShapeData shapeData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deco);
+
+        Intent intent = getIntent();
+        shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
 
         findViewById(R.id.confirm).setOnClickListener(mClickListner);
         findViewById(R.id.eyebrow1).setOnClickListener(mClickListner);
