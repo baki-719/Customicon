@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Eyebrow"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/eyebrow1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:src="@drawable/eyebrow1"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/eyebrow2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:src="@drawable/eyebrow2"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/eyebrow3"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:src="@drawable/eyebrow3"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/eyebrow4"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Eyebrow"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/eye1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/eye2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/eye3"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/eye4"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Nose"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/nose1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/nose2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/nose3"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/nose4"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Mouth"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:id="@+id/mouth1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/mouth2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/mouth3"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/mouth4"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="confirm"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="30dp"
+            android:onClick="onClick"
+            android:id="@+id/confirm"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

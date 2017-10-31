@@ -30,6 +30,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.dexafree.materialList.card.Card;
@@ -78,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
     protected MaterialListView mListView;
     @ViewById(R.id.fab)
     protected FloatingActionButton mFabActionBt;
+    @ViewById(R.id.fab_next)
+    protected FloatingActionButton mFabNectBt;
     @ViewById(R.id.fab_cam)
     protected FloatingActionButton mFabCamActionBt;
     @ViewById(R.id.toolbar)
@@ -89,14 +93,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mListView = (MaterialListView) findViewById(R.id.material_listview);
-        mListView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EmoticonActivity.class);
-                startActivity(intent);
-            }
-        });
+
         setSupportActionBar(mToolbar);
         // Just use hugo to print log
         isExternalStorageWritable();
@@ -129,6 +126,17 @@ public class MainActivity extends AppCompatActivity {
     @Click({R.id.fab_cam})
     protected void launchCameraPreview() {
         startActivity(new Intent(this, CameraActivity.class));
+    }
+
+    @Click({R.id.fab_next})
+    protected void nextActivity(){
+        if(mListView.getAdapter().getItemCount() > 0) {
+            Intent emoticonIntent = new Intent(MainActivity.this, EmoticonActivity.class);
+            emoticonIntent.putExtra("","");
+            startActivity(emoticonIntent);
+        } else {
+            Toast.makeText(MainActivity.this, "Face recognition first plz", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -297,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         addCardListView(cardrets);
+        
         dismissDialog();
     }
 
@@ -319,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
             mDialog.dismiss();
         }
     }
+    
 
     @DebugLog
     protected BitmapDrawable drawRect(String path, List<VisionDetRet> results, int color) {
@@ -386,9 +396,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("EyebrowShape-slope", String.valueOf(eyebrowShape.getShape().get("slope")));
             for (int i = 0 ; i < landmarks.size() ; i++) Log.d("LandmarksCoordination :"+i, landmarks.get(i).toString());
 
-            // TODO: 2017-10-29 0. getting emoticons shape data (using canvas object)
-            // TODO: 2017-10-29 2. setting resizing standard (now use test data)
-            // TODO: 2017-10-27 3. resizing shape data
+            // TODO: 2017-10-31 deliver object shape to EmoticonActivity using putExtra
+            // TODO: 2017-10-31 make object shape concretely
 
 
             for (int i = 0; i < landmarks.size(); i++) {
@@ -408,4 +417,5 @@ public class MainActivity extends AppCompatActivity {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bm, newWidth, newHeight, true);
         return resizedBitmap;
     }
+
 }

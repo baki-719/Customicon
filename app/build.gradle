@@ -24,6 +24,7 @@ android {
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'https://maven.google.com' }
     }
     dependencies {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
@@ -47,6 +48,8 @@ dependencies {
     compile project(':dlib')
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
 
     // Add AndroidJUnit
     androidTestCompile "com.android.support:support-annotations:${rootProject.ext.androidSupportSdkVersion}"
