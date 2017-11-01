@@ -367,8 +367,7 @@ public class MainActivity extends AppCompatActivity {
             Timber.tag(TAG).d("resizeRatio " + resizeRatio);
         }
 
-        // TODO: 2017-10-31 get rectangle size
-        // TODO: 2017-10-31 cal face ratio
+
 
         // Create canvas to draw
         Canvas canvas = new Canvas(bm);

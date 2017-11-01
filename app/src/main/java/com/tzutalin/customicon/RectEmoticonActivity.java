@@ -67,16 +67,16 @@ public class RectEmoticonActivity extends AppCompatActivity {
                 .setDrawable(drawRect(new VisionDetRet("face"
                         , 0
                         , left
-                ,top
-                ,right
-                ,bottom), Color.GREEN))
+                        , top
+                        , right
+                        , bottom), Color.GREEN))
                 .endConfig()
                 .build();
         addCardListView(card);
     }
 
     protected void addCardListView(Card card) {
-            mListView.add(card);
+        mListView.add(card);
     }
 
     protected BitmapDrawable drawRect(VisionDetRet ret, int color) {

@@ -5,7 +5,7 @@ package com.tzutalin.customicon.Utils.Dev;
  */
 
 public class Dev {
-    private boolean isDeveloping = true;
+    private boolean isDeveloping = false;
 
     public Dev() {
     }

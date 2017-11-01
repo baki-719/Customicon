@@ -86,20 +86,23 @@ public class EmoticonActivity extends AppCompatActivity {
                         break;
                 }
             } else {
+                int emoticonNum = 9;
                 switch (v.getId()) {
                     case R.id.user_image1:
-                        startActivity(nextIntent);
+                        emoticonNum = 1; //1. ryan
                         break;
                     case R.id.user_image2:
-                        startActivity(nextIntent);
+                        emoticonNum = 2; //2. ggam
                         break;
                     case R.id.user_image3:
-                        startActivity(nextIntent);
+                        emoticonNum = 3; //3.rabbit
                         break;
                     case R.id.user_image4:
-                        startActivity(nextIntent);
+                        emoticonNum = 4; //4.jibang
                         break;
                 }
+                nextIntent.putExtra("emoticon", emoticonNum);
+                startActivity(nextIntent);
             }
         }
     };
