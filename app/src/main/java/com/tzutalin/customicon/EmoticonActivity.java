@@ -9,6 +9,7 @@ import android.widget.Switch;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.tzutalin.customicon.Utils.Dev.Dev;
 import com.tzutalin.customicon.Utils.Shape.ShapeData;
 
 import org.aspectj.lang.reflect.InterTypeConstructorDeclaration;
@@ -20,14 +21,14 @@ import org.aspectj.lang.reflect.InterTypeConstructorDeclaration;
 public class EmoticonActivity extends AppCompatActivity {
 
     private ShapeData shapeData;
-    private boolean isDeveloping;
+    private Dev dev = new Dev();
 
     private ImageView ryan;
     private ImageView ggam;
     private ImageView rabbit;
     private ImageView jibang;
 
-    Intent nextIntent = new Intent(getApplicationContext(), DecoActivity.class);
+    private Intent nextIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,41 +36,12 @@ public class EmoticonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_emoticon);
 
         init();
+        Intent tmpIntent = getIntent();
+        nextIntent = new Intent(getApplicationContext(), DecoActivity.class);
 
-        Intent intent = getIntent();
-        isDeveloping = intent.getExtras().getBoolean("isDeveloping");
-
-        shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
+        shapeData = (ShapeData) tmpIntent.getSerializableExtra("shapeData");
         nextIntent.putExtra("shapeData", shapeData);
 
-
-//        ryan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(nextIntent);
-//            }
-//        });
-//
-//        jibang.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(nextIntent);
-//            }
-//        });
-//
-//        rabbit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(nextIntent);
-//            }
-//        });
-//
-//        ggam.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(nextIntent);
-//            }
-//        });
 
     }
 
@@ -99,9 +71,12 @@ public class EmoticonActivity extends AppCompatActivity {
     View.OnClickListener mClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (isDeveloping) {
+            if (dev.isDeveloping()) {
+                Intent tmpIntent = new Intent(EmoticonActivity.this, SettingSizeActivity.class);
                 switch (v.getId()) {
                     case R.id.user_image1:
+                        tmpIntent.putExtra("emoticon", 1);
+                        startActivity(tmpIntent);
                         break;
                     case R.id.user_image2:
                         break;

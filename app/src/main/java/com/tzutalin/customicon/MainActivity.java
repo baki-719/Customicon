@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.provider.BigImageCardProvider;
 import com.dexafree.materialList.view.MaterialListView;
+import com.tzutalin.customicon.Utils.Dev.Dev;
 import com.tzutalin.customicon.Utils.Shape.EyeShape;
 import com.tzutalin.customicon.Utils.Shape.MouthShape;
 import com.tzutalin.customicon.Utils.Shape.NoseShape;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private ShapeData shapeData;
-    private boolean isDeveloping = false;
+    private Dev dev = new Dev();
 
     // Storage Permissions
     private static String[] PERMISSIONS_REQ = {
@@ -126,9 +127,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Click({R.id.fab_cam})
     protected void launchCameraPreview() {
-        if(isDeveloping) {
+        if(dev.isDeveloping()) {
             Intent intent = new Intent(MainActivity.this, EmoticonActivity.class);
-            intent.putExtra("isDeveloping", isDeveloping);
+            intent.putExtra("isDeveloping", dev.isDeveloping());
+            startActivity(intent);
         } else {
             startActivity(new Intent(this, CameraActivity.class));
         }
@@ -426,7 +428,7 @@ public class MainActivity extends AppCompatActivity {
                 String num = Integer.toString(i);
                 int pointX = (int) (point.x * resizeRatio);
                 int pointY = (int) (point.y * resizeRatio);
-                canvas.drawText(num , pointX, pointY, paint);
+                canvas.drawPoint(pointX, pointY, paint);
             }
         }
 

@@ -50,6 +50,17 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name=".RectEmoticonActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".SettingSizeActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name">
+        </activity>
+
     </application>
 
 </manifest>
