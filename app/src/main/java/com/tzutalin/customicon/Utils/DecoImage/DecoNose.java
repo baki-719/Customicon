@@ -1,32 +1,33 @@
 package com.tzutalin.customicon.Utils.DecoImage;
 
+import android.util.Log;
+
+import com.tzutalin.customicon.Utils.Shape.ShapeData;
+
 /**
  * Created by DEV on 2017-11-01.
  */
 
 public class DecoNose extends DecoImage {
 
-    private double height;
-    private double width;
+    private static final String TYPE = "nose";
+
+    public DecoNose() {
+    }
 
     public DecoNose(double height, double width) {
-        this.height = height;
-        this.width = width;
+        super.setHeight(height);
+        super.setWidth(width);
+        super.setType(TYPE);
     }
 
-    public double getHeight() {
-        return height;
+    public void setGap_(ShapeData shapeData){
+        super.setGap(changeGap(shapeData));
     }
 
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
+    private double changeGap(ShapeData shapeData) {
+        double gap = Math.abs(Math.abs(getWidth()*getHeight()) - Math.abs(shapeData.getNoseHeight()*shapeData.getNoseWidth()));
+        Log.d("Nose gap : ", String.valueOf(gap));
+        return gap;
     }
 }

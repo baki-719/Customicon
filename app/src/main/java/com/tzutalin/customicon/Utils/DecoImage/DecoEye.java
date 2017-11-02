@@ -1,42 +1,33 @@
 package com.tzutalin.customicon.Utils.DecoImage;
 
+import android.util.Log;
+
+import com.tzutalin.customicon.Utils.Shape.ShapeData;
+
 /**
  * Created by DEV on 2017-11-01.
  */
 
 public class DecoEye extends DecoImage {
 
-    private double height;
-    private double width;
-    private double slope;
+    private static final String TYPE = "eye";
+
+    public DecoEye() {
+    }
 
     public DecoEye(double height, double width, double slope) {
-        this.height = height;
-        this.width = width;
-        this.slope = slope;
+        super.setHeight(height);
+        super.setWidth(width);
+        super.setSlope(slope);
+        super.setType(TYPE);
     }
 
-    public double getHeight() {
-        return height;
-    }
+    public void setGap_(ShapeData shapeData) {super.setGap(changeGap(shapeData));}
 
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getSlope() {
-        return slope;
-    }
-
-    public void setSlope(double slope) {
-        this.slope = slope;
+    private double changeGap(ShapeData shapeData) {
+        double gap;
+        gap = Math.abs(Math.abs(getSlope()) - Math.abs(shapeData.getEyeSlope()));
+        Log.d("Eye gap : ", String.valueOf(gap));
+        return gap;
     }
 }

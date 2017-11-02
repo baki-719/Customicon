@@ -6,29 +6,15 @@ package com.tzutalin.customicon.Utils.DecoImage;
 
 public class DecoMouth extends DecoImage {
 
-    private double height;
-    private double width;
+    private static final String TYPE = "mouth";
+
+    public DecoMouth() {
+    }
 
     public DecoMouth(double height, double width) {
-
-        this.height = height;
-        this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
+        super.setHeight(height);
+        super.setWidth(width);
+        super.setType(TYPE);
     }
 
 

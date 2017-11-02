@@ -1,31 +1,35 @@
 package com.tzutalin.customicon.Utils.DecoImage;
 
+import android.util.Log;
+
+import com.tzutalin.customicon.Utils.Shape.Shape;
+import com.tzutalin.customicon.Utils.Shape.ShapeData;
+
 /**
  * Created by DEV on 2017-11-01.
  */
 
 public class DecoEyebrow extends DecoImage {
-    private double slope;
-    private double length;
+
+    private static final String TYPE = "eyebrow";
+
+    public DecoEyebrow() {
+    }
 
     public DecoEyebrow(double slope, double length) {
-        this.slope = slope;
-        this.length = length;
+        super.setSlope(slope);
+        super.setLength(length);
+        super.setType(TYPE);
     }
 
-    public double getSlope() {
-        return slope;
+    public void setGap_(ShapeData shapeData){
+        super.setGap(changeGap(shapeData));
     }
 
-    public void setSlope(double slope) {
-        this.slope = slope;
+    private double changeGap(ShapeData shapeData) {
+        double gap = Math.abs(Math.abs(getSlope()) - Math.abs(shapeData.getEyebrowSlope()));
+        Log.d("Eyebrow gap : ", String.valueOf(gap));
+        return gap;
     }
 
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
 }

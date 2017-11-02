@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.tzutalin.customicon.Utils.CustomClass.CustomImageView;
 import com.tzutalin.customicon.Utils.Decos.RyanDeco;
 import com.tzutalin.customicon.Utils.Shape.ShapeData;
 
@@ -27,13 +26,13 @@ public class DecoActivity extends AppCompatActivity {
     @BindView(R.id.confirm)
     Button confrimBtn;
     //    eyeborw
-    CustomImageView[] eyebrowViews;
+    ImageView[] eyebrowViews;
     //    eye
-    CustomImageView[] eyeViews;
+    ImageView[] eyeViews;
     //    nose
-    CustomImageView[] noseViews;
+    ImageView[] noseViews;
     //    mouth
-    CustomImageView[] mouthViews;
+    ImageView[] mouthViews;
 
     private String TAG = "DecoActivity";
     private int DONT_SELECT_DECO = 999;
@@ -56,24 +55,24 @@ public class DecoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
         emoticon = intent.getExtras().getInt("emoticon");
-        eyebrowViews = new CustomImageView[]{( (CustomImageView) findViewById(R.id.eyebrow1))
-                , (CustomImageView) findViewById(R.id.eyebrow2)
-                , (CustomImageView) findViewById(R.id.eyebrow3)
-                , (CustomImageView) findViewById(R.id.eyebrow4)};
-        eyeViews =  new CustomImageView[] {(CustomImageView) findViewById(R.id.eye1)
-                , (CustomImageView) findViewById(R.id.eye2)
-                , (CustomImageView) findViewById(R.id.eye3)
-                , (CustomImageView) findViewById(R.id.eye4)
+        eyebrowViews = new ImageView[]{( (ImageView) findViewById(R.id.eyebrow1))
+                , (ImageView) findViewById(R.id.eyebrow2)
+                , (ImageView) findViewById(R.id.eyebrow3)
+                , (ImageView) findViewById(R.id.eyebrow4)};
+        eyeViews =  new ImageView[] {(ImageView) findViewById(R.id.eye1)
+                , (ImageView) findViewById(R.id.eye2)
+                , (ImageView) findViewById(R.id.eye3)
+                , (ImageView) findViewById(R.id.eye4)
         };
-       noseViews = new CustomImageView[]{(CustomImageView) findViewById(R.id.nose1)
-               , (CustomImageView) findViewById(R.id.nose2)
-               , (CustomImageView) findViewById(R.id.nose3)
-               , (CustomImageView) findViewById(R.id.nose4)
+       noseViews = new ImageView[]{(ImageView) findViewById(R.id.nose1)
+               , (ImageView) findViewById(R.id.nose2)
+               , (ImageView) findViewById(R.id.nose3)
+               , (ImageView) findViewById(R.id.nose4)
        };
-       mouthViews  = new CustomImageView[]{(CustomImageView) findViewById(R.id.mouth1)
-               , (CustomImageView) findViewById(R.id.mouth2)
-               , (CustomImageView) findViewById(R.id.mouth3)
-               , (CustomImageView) findViewById(R.id.mouth4)
+       mouthViews  = new ImageView[]{(ImageView) findViewById(R.id.mouth1)
+               , (ImageView) findViewById(R.id.mouth2)
+               , (ImageView) findViewById(R.id.mouth3)
+               , (ImageView) findViewById(R.id.mouth4)
        };
        setEmoticon(emoticon);
     }
@@ -81,7 +80,7 @@ public class DecoActivity extends AppCompatActivity {
     protected void setEmoticon(int emoticon) {
         switch (emoticon) {
             case 1: //ryan
-                RyanDeco ryanDeco = new RyanDeco(eyebrowViews, eyeViews, noseViews, mouthViews);
+                RyanDeco ryanDeco = new RyanDeco(eyebrowViews, eyeViews, noseViews, mouthViews, shapeData);
                 break;
             case 2: //ggam
                 break;

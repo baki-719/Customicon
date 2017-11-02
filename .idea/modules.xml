@@ -3,12 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Customicon.iml" filepath="$PROJECT_DIR$/Customicon.iml" />
-      <module fileurl="file://D:/Project/Customicon/Fast-Face-android.iml" filepath="D:/Project/Customicon/Fast-Face-android.iml" />
+      <module fileurl="file://D:\Project\Customicon\Fast-Face-android.iml" filepath="D:\Project\Customicon\Fast-Face-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:/Project/Customicon/app/app.iml" filepath="D:/Project/Customicon/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dlib/dlib.iml" filepath="$PROJECT_DIR$/dlib/dlib.iml" />
-      <module fileurl="file://D:/Project/Customicon/dlib/dlib.iml" filepath="D:/Project/Customicon/dlib/dlib.iml" />
-      <module fileurl="file://D:/Project/Customicon/dlib-android-app.iml" filepath="D:/Project/Customicon/dlib-android-app.iml" />
+      <module fileurl="file://D:\Project\Customicon\dlib-android-app.iml" filepath="D:\Project\Customicon\dlib-android-app.iml" />
     </modules>
   </component>
 </project>

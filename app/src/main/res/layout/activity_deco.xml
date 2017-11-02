@@ -24,7 +24,7 @@
             android:layout_marginTop="20sp"
             android:orientation="horizontal">
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eyebrow1"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -38,7 +38,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eyebrow2"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -52,7 +52,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eyebrow3"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -65,7 +65,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eyebrow4"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -94,7 +94,7 @@
             android:layout_marginTop="20sp"
             android:orientation="horizontal">
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eye1"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -107,7 +107,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eye2"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -120,7 +120,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eye3"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -132,7 +132,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/eye4"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -161,7 +161,7 @@
             android:layout_marginTop="20sp"
             android:orientation="horizontal">
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/nose1"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -174,7 +174,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/nose2"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -187,7 +187,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/nose3"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -199,7 +199,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/nose4"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -229,7 +229,7 @@
             android:orientation="horizontal"
             android:layout_marginBottom="50dp">
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/mouth1"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -242,7 +242,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/mouth2"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -255,7 +255,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/mouth3"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
@@ -267,7 +267,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"/>
 
-            <com.tzutalin.customicon.Utils.CustomClass.CustomImageView
+            <ImageView
                 android:id="@+id/mouth4"
                 android:layout_width="100dp"
                 android:layout_height="80dp"

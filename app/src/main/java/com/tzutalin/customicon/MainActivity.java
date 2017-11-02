@@ -420,6 +420,7 @@ public class MainActivity extends AppCompatActivity {
                     , noseShape.getWidth()
                     , mouthShape.getHeight()
                     , mouthShape.getWidth());
+            Log.d(TAG,"shapeData : " + shapeData.toString());
 
             Point point = null;
             for (int i = 0; i < landmarks.size(); i++) {
