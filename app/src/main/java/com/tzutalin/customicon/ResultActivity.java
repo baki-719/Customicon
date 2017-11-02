@@ -134,9 +134,12 @@ public class ResultActivity extends AppCompatActivity {
                     canvas.drawBitmap(resize_nose, 280, 250, null);
                     break;
                 case 2: // ggam
+                    eyeLeftInversion = Bitmap.createBitmap(eyeLeft, 0, 0,
+                            eyeLeft.getWidth(), eyeLeft.getHeight(), sideInversion, false);
+
                     resize_background = Bitmap.createScaledBitmap(background, width, height-400, true);
                     resize_eyeRight = Bitmap.createScaledBitmap(eyeRight, 300, 300, true);
-                    resize_eyeLeft = Bitmap.createScaledBitmap(eyeLeft, 300, 300, true);
+                    resize_eyeLeft = Bitmap.createScaledBitmap(eyeLeftInversion, 300, 300, true);
                     resize_mouth = Bitmap.createScaledBitmap(mouth, 300, 300, true);
 
                     canvas.drawBitmap(resize_background, 0, 0, null);

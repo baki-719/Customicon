@@ -429,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
                 String num = Integer.toString(i);
                 int pointX = (int) (point.x * resizeRatio);
                 int pointY = (int) (point.y * resizeRatio);
-                canvas.drawPoint(pointX, pointY, paint);
+                canvas.drawCircle(pointX, pointY, 2, paint);
             }
         }
 

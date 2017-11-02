@@ -27,7 +27,7 @@ public class DecoEyebrow extends DecoImage {
     }
 
     private double changeGap(ShapeData shapeData) {
-        double gap = Math.abs(Math.abs(getSlope()) - Math.abs(shapeData.getEyebrowSlope()));
+        double gap = Math.abs(getSlope() - shapeData.getEyebrowSlope());
         Log.d("Eyebrow gap : ", String.valueOf(gap));
         return gap;
     }

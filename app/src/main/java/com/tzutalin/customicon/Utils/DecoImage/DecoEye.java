@@ -26,7 +26,7 @@ public class DecoEye extends DecoImage {
 
     private double changeGap(ShapeData shapeData) {
         double gap;
-        gap = Math.abs(Math.abs(getSlope()) - Math.abs(shapeData.getEyeSlope()));
+        gap = Math.abs(getSlope() - shapeData.getEyeSlope());
         Log.d("Eye gap : ", String.valueOf(gap));
         return gap;
     }

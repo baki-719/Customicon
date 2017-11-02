@@ -27,7 +27,7 @@ public class DecoMouth extends DecoImage {
     }
 
     private double changeGap(ShapeData shapeData) {
-        double gap = Math.abs(Math.abs(getHeight()) - Math.abs(shapeData.getMouthHeight()));
+        double gap = Math.abs(getHeight() - shapeData.getMouthHeight());
         Log.d("Mouth gap : ", String.valueOf(gap));
         return gap;
     }

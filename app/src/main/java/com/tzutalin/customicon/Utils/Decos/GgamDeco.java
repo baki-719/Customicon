@@ -8,6 +8,7 @@ import com.tzutalin.customicon.Utils.DecoImage.DecoEye;
 import com.tzutalin.customicon.Utils.DecoImage.DecoEyebrow;
 import com.tzutalin.customicon.Utils.DecoImage.DecoMouth;
 import com.tzutalin.customicon.Utils.DecoImage.DecoNose;
+import com.tzutalin.customicon.Utils.SettingValue.SettingValue;
 import com.tzutalin.customicon.Utils.Shape.ShapeData;
 
 import java.util.Arrays;
@@ -26,6 +27,7 @@ public class GgamDeco extends Deco {
     private DecoEye[] emoEyes;
     private DecoNose[] emoNoses;
     private DecoMouth[] emoMouths; //these object sort
+    private SettingValue settingValue;
 
     public GgamDeco() {
     }
@@ -41,6 +43,7 @@ public class GgamDeco extends Deco {
         emoEyes = new DecoEye[4];
         emoNoses = new DecoNose[4];
         emoMouths = new DecoMouth[4];
+        settingValue = new SettingValue();
 
         for(int i = 0 ; i<emoEyebrows.length;i++) emoEyebrows[i] = new DecoEyebrow();
         for(int i = 0 ; i<emoEyes.length;i++) emoEyes[i] = new DecoEye();
@@ -56,23 +59,23 @@ public class GgamDeco extends Deco {
 
     public void init() {
         emoEyes[0].setResource(R.drawable.eye1);
-        emoEyes[1].setResource(R.drawable.ryan_eye2);
-        emoEyes[2].setResource(R.drawable.ryan_eye3);
-        emoEyes[3].setResource(R.drawable.ryan_eye4);
+        emoEyes[1].setResource(R.drawable.eye2);
+        emoEyes[2].setResource(R.drawable.eye3);
+        emoEyes[3].setResource(R.drawable.eye4);
         emoMouths[0].setResource(R.drawable.ggam_mouth1);
         emoMouths[1].setResource(R.drawable.ggam_mouth2);
         emoMouths[2].setResource(R.drawable.ggam_mouth3);
         emoMouths[3].setResource(R.drawable.ggam_mouth4);
 
 
-        emoEyes[0].setSlope(0);
-        emoEyes[1].setSlope(0);
-        emoEyes[2].setSlope(18);
-        emoEyes[3].setSlope(0);
-        emoMouths[0].setHeight(0);
-        emoMouths[1].setHeight(150);
-        emoMouths[2].setHeight(200);
-        emoMouths[3].setHeight(75);
+        emoEyes[0].setSlope(settingValue.getEyeSlope(1));
+        emoEyes[1].setSlope(settingValue.getEyeSlope(2));
+        emoEyes[2].setSlope(settingValue.getEyeSlope(3));
+        emoEyes[3].setSlope(settingValue.getEyeSlope(4));
+        emoMouths[0].setHeight(settingValue.getMouthHeight(1));
+        emoMouths[1].setHeight(settingValue.getMouthHeight(2));
+        emoMouths[2].setHeight(settingValue.getMouthHeight(3));
+        emoMouths[3].setHeight(settingValue.getMouthHeight(4));
         for(int i = 0 ; i < 4; i++) {
             emoEyes[i].setGap_(shapeData);
             emoMouths[i].setGap_(shapeData);
