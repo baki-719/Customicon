@@ -10,17 +10,13 @@ import com.tzutalin.customicon.Utils.DecoImage.DecoImage;
 import com.tzutalin.customicon.Utils.DecoImage.DecoMouth;
 import com.tzutalin.customicon.Utils.DecoImage.DecoNose;
 import com.tzutalin.customicon.Utils.Shape.ShapeData;
-import com.tzutalin.customicon.Utils.Sort.Sort;
 
 import java.util.Arrays;
 
 /**
  * Created by DEV on 2017-11-02.
  */
-// TODO: 2017-11-02 have to finish sort function
-// TODO: 2017-11-02 if sort customimageview, it will need deco's data(ex. slope, length)
-
-public class RyanDeco {
+public class RyanDeco extends Deco{
     private ImageView[] decoEyebrows;
     private ImageView[] decoEyes;
     private ImageView[] decoNoses;
@@ -57,19 +53,6 @@ public class RyanDeco {
         sort(emoEyebrows, emoEyes, emoNoses);
         for(DecoEyebrow tmp : emoEyebrows) Log.d("after sorting : ", String.valueOf(tmp.getSlope()));
         binding();
-
-
-    }
-
-    public void setGap(Sort sort, DecoImage[] decoImages, ShapeData shapeData){
-        for(int i = 0; i < decoImages.length; i++) {
-        }
-    }
-
-    public void sort(DecoEyebrow[] decoEyebrows, DecoEye[] decoEyes, DecoNose[] decoNoses){
-        Arrays.sort(decoEyebrows);
-        Arrays.sort(decoEyes);
-        Arrays.sort(decoNoses);
 
     }
 
@@ -114,6 +97,12 @@ public class RyanDeco {
         }
     }
 
+    public void sort(DecoEyebrow[] decoEyebrows, DecoEye[] decoEyes, DecoNose[] decoNoses){
+        Arrays.sort(decoEyebrows);
+        Arrays.sort(decoEyes);
+        Arrays.sort(decoNoses);
+    }
+
     private void binding() {
         for(int i = 0 ; i< emoEyebrows.length ; i++) {
             decoEyebrows[i].setImageResource(emoEyebrows[i].getResource());
@@ -122,35 +111,19 @@ public class RyanDeco {
         }
     }
 
-    public ImageView[] getDecoEyebrows() {
-        return decoEyebrows;
+    public DecoEyebrow[] getEmoEyebrows() {
+        return emoEyebrows;
     }
 
-    public void setDecoEyebrows(ImageView[] decoEyebrows) {
-        this.decoEyebrows = decoEyebrows;
+    public DecoEye[] getEmoEyes() {
+        return emoEyes;
     }
 
-    public ImageView[] getDecoEyes() {
-        return decoEyes;
+    public DecoNose[] getEmoNoses() {
+        return emoNoses;
     }
 
-    public void setDecoEyes(ImageView[] decoEyes) {
-        this.decoEyes = decoEyes;
-    }
-
-    public ImageView[] getDecoNoses() {
-        return decoNoses;
-    }
-
-    public void setDecoNoses(ImageView[] decoNoses) {
-        this.decoNoses = decoNoses;
-    }
-
-    public ImageView[] getDecoMouths() {
-        return decoMouths;
-    }
-
-    public void setDecoMouths(ImageView[] decoMouths) {
-        this.decoMouths = decoMouths;
+    public DecoMouth[] getEmoMouths() {
+        return emoMouths;
     }
 }

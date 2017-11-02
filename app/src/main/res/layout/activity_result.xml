@@ -21,7 +21,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:background="#000000"
-            android:src="@drawable/ryan_emoticon2"/>
+            android:src="@drawable/ryan_emoticon2"
+            android:id="@+id/result_frame"/>
 
         <Button
             android:layout_width="250dp"

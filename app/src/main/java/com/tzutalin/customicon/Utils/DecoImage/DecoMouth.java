@@ -1,5 +1,9 @@
 package com.tzutalin.customicon.Utils.DecoImage;
 
+import android.util.Log;
+
+import com.tzutalin.customicon.Utils.Shape.ShapeData;
+
 /**
  * Created by DEV on 2017-11-01.
  */
@@ -17,5 +21,15 @@ public class DecoMouth extends DecoImage {
         super.setType(TYPE);
     }
 
+
+    public void setGap_(ShapeData shapeData){
+        super.setGap(changeGap(shapeData));
+    }
+
+    private double changeGap(ShapeData shapeData) {
+        double gap = Math.abs(Math.abs(getHeight()) - Math.abs(shapeData.getMouthHeight()));
+        Log.d("Mouth gap : ", String.valueOf(gap));
+        return gap;
+    }
 
 }

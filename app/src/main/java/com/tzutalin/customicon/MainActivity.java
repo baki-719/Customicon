@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "You haven't picked Image", Toast.LENGTH_LONG).show();
             }
-            
+
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
@@ -335,11 +335,12 @@ public class MainActivity extends AppCompatActivity {
             mDialog.dismiss();
         }
     }
-    
+
 
     @DebugLog
     protected BitmapDrawable drawRect(String path, List<VisionDetRet> results, int color) {
         BitmapFactory.Options options = new BitmapFactory.Options();
+
         options.inSampleSize = 1;
         Bitmap bm = BitmapFactory.decodeFile(path, options);
         android.graphics.Bitmap.Config bitmapConfig = bm.getConfig();

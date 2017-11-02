@@ -1,13 +1,17 @@
 package com.tzutalin.customicon;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tzutalin.customicon.Utils.Decos.Deco;
+import com.tzutalin.customicon.Utils.Decos.GgamDeco;
 import com.tzutalin.customicon.Utils.Decos.RyanDeco;
 import com.tzutalin.customicon.Utils.Shape.ShapeData;
 
@@ -19,13 +23,11 @@ import butterknife.OnClick;
  * Created by pixeleye02 on 2017-10-31.
  */
 
-// TODO: 2017-10-31 sort face component to shapeData
-// TODO: 2017-11-02 function which is chage image when select image
 public class DecoActivity extends AppCompatActivity {
 
     @BindView(R.id.confirm)
-    Button confrimBtn;
-    //    eyeborw
+    Button confirmBtn;
+    //    eyebrow
     ImageView[] eyebrowViews;
     //    eye
     ImageView[] eyeViews;
@@ -33,13 +35,24 @@ public class DecoActivity extends AppCompatActivity {
     ImageView[] noseViews;
     //    mouth
     ImageView[] mouthViews;
+    @BindView(R.id.eyebrow_text)
+    TextView eyebrowText;
+    @BindView(R.id.eye_text)
+    TextView eyeText;
+    @BindView(R.id.nose_text)
+    TextView noseText;
+    @BindView(R.id.mouth_text)
+    TextView mouthText;
 
     private String TAG = "DecoActivity";
     private int DONT_SELECT_DECO = 999;
 
+    private boolean intentCondition;
     private boolean[] bitList = new boolean[16];
     private ShapeData shapeData;
     private int emoticon;
+
+    private Deco tmpDeco;
 
     private int selectedEyebrow = DONT_SELECT_DECO;
     private int selectedEye = DONT_SELECT_DECO;
@@ -55,34 +68,41 @@ public class DecoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         shapeData = (ShapeData) intent.getSerializableExtra("shapeData");
         emoticon = intent.getExtras().getInt("emoticon");
-        eyebrowViews = new ImageView[]{( (ImageView) findViewById(R.id.eyebrow1))
+        eyebrowViews = new ImageView[]{((ImageView) findViewById(R.id.eyebrow1))
                 , (ImageView) findViewById(R.id.eyebrow2)
                 , (ImageView) findViewById(R.id.eyebrow3)
                 , (ImageView) findViewById(R.id.eyebrow4)};
-        eyeViews =  new ImageView[] {(ImageView) findViewById(R.id.eye1)
+        eyeViews = new ImageView[]{(ImageView) findViewById(R.id.eye1)
                 , (ImageView) findViewById(R.id.eye2)
                 , (ImageView) findViewById(R.id.eye3)
                 , (ImageView) findViewById(R.id.eye4)
         };
-       noseViews = new ImageView[]{(ImageView) findViewById(R.id.nose1)
-               , (ImageView) findViewById(R.id.nose2)
-               , (ImageView) findViewById(R.id.nose3)
-               , (ImageView) findViewById(R.id.nose4)
-       };
-       mouthViews  = new ImageView[]{(ImageView) findViewById(R.id.mouth1)
-               , (ImageView) findViewById(R.id.mouth2)
-               , (ImageView) findViewById(R.id.mouth3)
-               , (ImageView) findViewById(R.id.mouth4)
-       };
-       setEmoticon(emoticon);
+        noseViews = new ImageView[]{(ImageView) findViewById(R.id.nose1)
+                , (ImageView) findViewById(R.id.nose2)
+                , (ImageView) findViewById(R.id.nose3)
+                , (ImageView) findViewById(R.id.nose4)
+        };
+        mouthViews = new ImageView[]{(ImageView) findViewById(R.id.mouth1)
+                , (ImageView) findViewById(R.id.mouth2)
+                , (ImageView) findViewById(R.id.mouth3)
+                , (ImageView) findViewById(R.id.mouth4)
+        };
+        setEmoticon(emoticon);
     }
 
     protected void setEmoticon(int emoticon) {
         switch (emoticon) {
             case 1: //ryan
-                RyanDeco ryanDeco = new RyanDeco(eyebrowViews, eyeViews, noseViews, mouthViews, shapeData);
+                tmpDeco = new RyanDeco(eyebrowViews, eyeViews, noseViews, mouthViews, shapeData);
+                mouthText.setVisibility(View.GONE);
+                for (int i = 0; i < mouthViews.length; i++) mouthViews[i].setVisibility(View.GONE);
                 break;
             case 2: //ggam
+                tmpDeco = new GgamDeco(eyebrowViews, eyeViews, noseViews, mouthViews, shapeData);
+                eyebrowText.setVisibility(View.GONE);
+                noseText.setVisibility(View.GONE);
+                for (int i = 0; i < eyebrowViews.length; i++) eyebrowViews[i].setVisibility(View.GONE);
+                for (int i = 0; i < mouthViews.length; i++) noseViews[i].setVisibility(View.GONE);
                 break;
             case 3: //rabbit
                 break;
@@ -93,16 +113,33 @@ public class DecoActivity extends AppCompatActivity {
 
     @OnClick(R.id.confirm)
     void clickedConfirmBtn() {
-        if (selectedEyebrow == DONT_SELECT_DECO || selectedEye == DONT_SELECT_DECO || selectedNose == DONT_SELECT_DECO || selectedMouth == DONT_SELECT_DECO)
-            Toast.makeText(DecoActivity.this, "Pick image plz", Toast.LENGTH_SHORT).show();
+        setIntentCondition();
+        if (!intentCondition)
+            Toast.makeText(DecoActivity.this, "Pick deco plz", Toast.LENGTH_SHORT).show();
         else {
             Intent intent = new Intent(DecoActivity.this, ResultActivity.class);
             int[] selectedDeco = {selectedEyebrow
                     , selectedEye
                     , selectedNose
                     , selectedMouth};
+            intent.putExtra("emoticon", emoticon);
             intent.putExtra("selectedDeco", selectedDeco);
             startActivity(intent);
+        }
+    }
+
+    private void setIntentCondition() {
+        switch (emoticon) {
+            case 1: //ryan
+                intentCondition = (selectedEyebrow != DONT_SELECT_DECO
+                        && selectedEye != DONT_SELECT_DECO
+                        && selectedNose != DONT_SELECT_DECO);
+                break;
+            case 2: //ggam
+                intentCondition = (selectedEye != DONT_SELECT_DECO
+                        && selectedMouth != DONT_SELECT_DECO);
+
+                break;
         }
     }
 
@@ -110,53 +147,92 @@ public class DecoActivity extends AppCompatActivity {
     void imageViewsClick(View v) {
         switch (v.getId()) {
             case R.id.eyebrow1:
-                selectedEyebrow = 1;
+                selectedEyebrow = tmpDeco.getEmoEyebrows()[0].getResource();
+                setBaseBackground(eyebrowViews);
+                eyebrowViews[0].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eyebrow2:
-                selectedEyebrow = 2;
+                selectedEyebrow = tmpDeco.getEmoEyebrows()[1].getResource();
+                setBaseBackground(eyebrowViews);
+                eyebrowViews[1].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eyebrow3:
-                selectedEyebrow = 3;
+                selectedEyebrow = tmpDeco.getEmoEyebrows()[2].getResource();
+                setBaseBackground(eyebrowViews);
+                eyebrowViews[2].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eyebrow4:
-                selectedEyebrow = 4;
+                selectedEyebrow = tmpDeco.getEmoEyebrows()[3].getResource();
+                setBaseBackground(eyebrowViews);
+                eyebrowViews[3].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eye1:
-                selectedEye = 1;
+                selectedEye = tmpDeco.getEmoEyes()[0].getResource();
+                setBaseBackground(eyeViews);
+                eyeViews[0].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eye2:
-                selectedEye = 2;
+                selectedEye = tmpDeco.getEmoEyes()[1].getResource();
+                setBaseBackground(eyeViews);
+                eyeViews[1].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eye3:
-                selectedEye = 3;
+                selectedEye = tmpDeco.getEmoEyes()[2].getResource();
+                setBaseBackground(eyeViews);
+                eyeViews[2].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.eye4:
-                selectedEye = 4;
+                selectedEye = tmpDeco.getEmoEyes()[3].getResource();
+                setBaseBackground(eyeViews);
+                eyeViews[3].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.nose1:
-                selectedNose = 1;
+                selectedNose = tmpDeco.getEmoNoses()[0].getResource();
+                setBaseBackground(noseViews);
+                noseViews[0].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.nose2:
-                selectedNose = 2;
+                selectedNose = tmpDeco.getEmoNoses()[1].getResource();
+                setBaseBackground(noseViews);
+                noseViews[1].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.nose3:
-                selectedNose = 3;
+                selectedNose = tmpDeco.getEmoNoses()[2].getResource();
+                setBaseBackground(noseViews);
+                noseViews[2].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.nose4:
-                selectedNose = 4;
+                selectedNose = tmpDeco.getEmoNoses()[3].getResource();
+                setBaseBackground(noseViews);
+                noseViews[3].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.mouth1:
-                selectedMouth = 1;
+                selectedMouth = tmpDeco.getEmoMouths()[0].getResource();
+                setBaseBackground(mouthViews);
+                mouthViews[0].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.mouth2:
-                selectedMouth = 2;
+                selectedMouth = tmpDeco.getEmoMouths()[1].getResource();
+                setBaseBackground(mouthViews);
+                mouthViews[1].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.mouth3:
-                selectedMouth = 3;
+                selectedMouth = tmpDeco.getEmoMouths()[2].getResource();
+                setBaseBackground(mouthViews);
+                mouthViews[2].setBackgroundColor(Color.GRAY);
                 break;
             case R.id.mouth4:
-                selectedMouth = 4;
+                selectedMouth = tmpDeco.getEmoMouths()[3].getResource();
+                setBaseBackground(mouthViews);
+                mouthViews[3].setBackgroundColor(Color.GRAY);
                 break;
         }
     }
+
+    private void setBaseBackground(ImageView[] imageViews) {
+        for (int i = 0; i < imageViews.length; i++)
+            imageViews[i].setBackgroundColor(Color.rgb(172, 235, 244));
+    }
+
+
 }

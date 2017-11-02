@@ -13,6 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/eyebrow_text"
             android:text="Select Eyebrow"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
@@ -83,6 +84,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/eye_text"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="40dp"
             android:text="Select Eye"
@@ -150,6 +152,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/nose_text"
             android:text="Select Nose"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="30dp"
@@ -217,6 +220,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/mouth_text"
             android:text="Select Mouth"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="30dp"
