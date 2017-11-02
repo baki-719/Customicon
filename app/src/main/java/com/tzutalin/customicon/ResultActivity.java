@@ -27,6 +27,7 @@ import butterknife.Optional;
 public class ResultActivity extends AppCompatActivity {
 
     private String TAG = "ResultActivity";
+    private int DONT_SELECT_DECO = 999;
 
     private int[] selectedDeco;
     private int emoticon;
@@ -38,6 +39,7 @@ public class ResultActivity extends AppCompatActivity {
     private Bitmap eyeRight;
     private Bitmap nose;
     private Bitmap mouth;
+    private Bitmap glasses;
     private Bitmap background;
 
 
@@ -80,12 +82,14 @@ public class ResultActivity extends AppCompatActivity {
                     eyeRight = BitmapFactory.decodeResource(resources, selectedDeco[1]);
                     eyeLeft = BitmapFactory.decodeResource(resources, selectedDeco[1]);
                     nose = BitmapFactory.decodeResource(resources, selectedDeco[2]);
+                    if(selectedDeco[4]!=DONT_SELECT_DECO) glasses = BitmapFactory.decodeResource(resources, selectedDeco[4]);
                     break;
                 case 2:
                     background = BitmapFactory.decodeResource(resources, backgroundResource);
                     eyeRight = BitmapFactory.decodeResource(resources, selectedDeco[1]);
                     eyeLeft = BitmapFactory.decodeResource(resources, selectedDeco[1]);
                     mouth = BitmapFactory.decodeResource(resources, selectedDeco[3]);
+                    if(selectedDeco[4]!=DONT_SELECT_DECO) glasses = BitmapFactory.decodeResource(resources, selectedDeco[4]);
                     break;
             }
 
@@ -110,6 +114,7 @@ public class ResultActivity extends AppCompatActivity {
             Bitmap resize_eyeLeft;
             Bitmap resize_eyebrowLeft;
             Bitmap resize_mouth;
+            Bitmap resize_glasses = null;
 
             switch (emoticon) {
                 case 1: // ryan
@@ -125,6 +130,7 @@ public class ResultActivity extends AppCompatActivity {
 
                     resize_eyeLeft = Bitmap.createScaledBitmap(eyeLeftInversion, 300, 300, true);
                     resize_eyebrowLeft = Bitmap.createScaledBitmap(eyebrowLeftInversion, 200, 200, true);
+                    if(selectedDeco[4]!=DONT_SELECT_DECO) resize_glasses = Bitmap.createScaledBitmap(glasses, 600,600, true);
 
                     canvas.drawBitmap(resize_background, 0, 0, null);
                     canvas.drawBitmap(resize_eyebrowRight, 560, 170, null);
@@ -132,6 +138,7 @@ public class ResultActivity extends AppCompatActivity {
                     canvas.drawBitmap(resize_eyeRight, 500, 200, null);
                     canvas.drawBitmap(resize_eyeLeft, 270,200,null);
                     canvas.drawBitmap(resize_nose, 280, 250, null);
+                    if(selectedDeco[4]!=DONT_SELECT_DECO) canvas.drawBitmap(resize_glasses, 235, 60, null);
                     break;
                 case 2: // ggam
                     eyeLeftInversion = Bitmap.createBitmap(eyeLeft, 0, 0,
@@ -141,11 +148,13 @@ public class ResultActivity extends AppCompatActivity {
                     resize_eyeRight = Bitmap.createScaledBitmap(eyeRight, 300, 300, true);
                     resize_eyeLeft = Bitmap.createScaledBitmap(eyeLeftInversion, 300, 300, true);
                     resize_mouth = Bitmap.createScaledBitmap(mouth, 300, 300, true);
+                    if(selectedDeco[4]!=DONT_SELECT_DECO) resize_glasses = Bitmap.createScaledBitmap(glasses, 600,600, true);
 
                     canvas.drawBitmap(resize_background, 0, 0, null);
                     canvas.drawBitmap(resize_eyeRight, 515, 200, null);
                     canvas.drawBitmap(resize_eyeLeft, 285,200,null);
                     canvas.drawBitmap(resize_mouth, 400, 300, null);
+                    if(selectedDeco[4]!=DONT_SELECT_DECO) canvas.drawBitmap(resize_glasses, 245, 60, null);
                     break;
             }
 

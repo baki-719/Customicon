@@ -286,6 +286,51 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/glasses_text"
+            android:text="Select Glasses"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:id="@+id/glasses1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/glasses2"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:maxWidth="100dp"
+                android:maxHeight="80dp"
+                android:adjustViewBounds="true"
+                android:background="#B2EBF4"
+                android:onClick="onClick"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -296,7 +341,6 @@
             android:layout_marginBottom="30dp"
             android:onClick="onClick"
             android:id="@+id/confirm"/>
-
 
     </LinearLayout>
 

@@ -35,6 +35,8 @@ public class DecoActivity extends AppCompatActivity {
     ImageView[] noseViews;
     //    mouth
     ImageView[] mouthViews;
+    //    glasses
+    ImageView[] glassesViews;
     @BindView(R.id.eyebrow_text)
     TextView eyebrowText;
     @BindView(R.id.eye_text)
@@ -58,6 +60,7 @@ public class DecoActivity extends AppCompatActivity {
     private int selectedEye = DONT_SELECT_DECO;
     private int selectedNose = DONT_SELECT_DECO;
     private int selectedMouth = DONT_SELECT_DECO;
+    private int selectedGlasses = DONT_SELECT_DECO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,11 @@ public class DecoActivity extends AppCompatActivity {
                 , (ImageView) findViewById(R.id.mouth3)
                 , (ImageView) findViewById(R.id.mouth4)
         };
+        glassesViews = new ImageView[]{(ImageView) findViewById(R.id.glasses1)
+                , (ImageView) findViewById(R.id.glasses2)
+        };
+        glassesViews[0].setImageResource(R.drawable.glasses1);
+        glassesViews[1].setImageResource(R.drawable.glasses2);
         setEmoticon(emoticon);
     }
 
@@ -101,7 +109,8 @@ public class DecoActivity extends AppCompatActivity {
                 tmpDeco = new GgamDeco(eyebrowViews, eyeViews, noseViews, mouthViews, shapeData);
                 eyebrowText.setVisibility(View.GONE);
                 noseText.setVisibility(View.GONE);
-                for (int i = 0; i < eyebrowViews.length; i++) eyebrowViews[i].setVisibility(View.GONE);
+                for (int i = 0; i < eyebrowViews.length; i++)
+                    eyebrowViews[i].setVisibility(View.GONE);
                 for (int i = 0; i < mouthViews.length; i++) noseViews[i].setVisibility(View.GONE);
                 break;
             case 3: //rabbit
@@ -121,7 +130,8 @@ public class DecoActivity extends AppCompatActivity {
             int[] selectedDeco = {selectedEyebrow
                     , selectedEye
                     , selectedNose
-                    , selectedMouth};
+                    , selectedMouth
+                    , selectedGlasses};
             intent.putExtra("emoticon", emoticon);
             intent.putExtra("selectedDeco", selectedDeco);
             startActivity(intent);
@@ -143,9 +153,10 @@ public class DecoActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick({R.id.eyebrow1, R.id.eyebrow2, R.id.eyebrow3, R.id.eyebrow4, R.id.eye1, R.id.eye2, R.id.eye3, R.id.eye4, R.id.nose1, R.id.nose2, R.id.nose3, R.id.nose4, R.id.mouth1, R.id.mouth2, R.id.mouth3, R.id.mouth4})
+    @OnClick({R.id.eyebrow1, R.id.eyebrow2, R.id.eyebrow3, R.id.eyebrow4, R.id.eye1, R.id.eye2, R.id.eye3, R.id.eye4, R.id.nose1, R.id.nose2, R.id.nose3, R.id.nose4, R.id.mouth1, R.id.mouth2, R.id.mouth3, R.id.mouth4, R.id.glasses1, R.id.glasses2})
     void imageViewsClick(View v) {
         switch (v.getId()) {
+            //eyebrow
             case R.id.eyebrow1:
                 selectedEyebrow = tmpDeco.getEmoEyebrows()[0].getResource();
                 setBaseBackground(eyebrowViews);
@@ -166,6 +177,7 @@ public class DecoActivity extends AppCompatActivity {
                 setBaseBackground(eyebrowViews);
                 eyebrowViews[3].setBackgroundColor(Color.GRAY);
                 break;
+            //eye
             case R.id.eye1:
                 selectedEye = tmpDeco.getEmoEyes()[0].getResource();
                 setBaseBackground(eyeViews);
@@ -186,6 +198,7 @@ public class DecoActivity extends AppCompatActivity {
                 setBaseBackground(eyeViews);
                 eyeViews[3].setBackgroundColor(Color.GRAY);
                 break;
+            //nose
             case R.id.nose1:
                 selectedNose = tmpDeco.getEmoNoses()[0].getResource();
                 setBaseBackground(noseViews);
@@ -206,6 +219,7 @@ public class DecoActivity extends AppCompatActivity {
                 setBaseBackground(noseViews);
                 noseViews[3].setBackgroundColor(Color.GRAY);
                 break;
+            //mouth
             case R.id.mouth1:
                 selectedMouth = tmpDeco.getEmoMouths()[0].getResource();
                 setBaseBackground(mouthViews);
@@ -225,6 +239,27 @@ public class DecoActivity extends AppCompatActivity {
                 selectedMouth = tmpDeco.getEmoMouths()[3].getResource();
                 setBaseBackground(mouthViews);
                 mouthViews[3].setBackgroundColor(Color.GRAY);
+                break;
+            //glasses
+            case R.id.glasses1:
+                if(selectedGlasses == R.drawable.glasses1) {
+                    selectedGlasses = DONT_SELECT_DECO;
+                    setBaseBackground(glassesViews);
+                } else {
+                    selectedGlasses = R.drawable.glasses1;
+                    setBaseBackground(glassesViews);
+                    glassesViews[0].setBackgroundColor(Color.GRAY);
+                }
+                break;
+            case R.id.glasses2:
+                if (selectedGlasses == R.drawable.glasses2) {
+                    selectedGlasses = DONT_SELECT_DECO;
+                    setBaseBackground(glassesViews);
+                } else {
+                    selectedGlasses = R.drawable.glasses2;
+                    setBaseBackground(glassesViews);
+                    glassesViews[1].setBackgroundColor(Color.GRAY);
+                }
                 break;
         }
     }
